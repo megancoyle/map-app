@@ -2,16 +2,15 @@
 var express         = require('express');
 var mongoose        = require('mongoose');
 var port            = process.env.PORT || 3000;
+var database        = require('./app/config');
 var morgan          = require('morgan');
 var bodyParser      = require('body-parser');
 var methodOverride  = require('method-override');
 var app             = express();
 
 // Express Configuration
-
-
 // Sets the connection to MongoDB
-mongoose.connect("mongodb://localhost/MeanMapApp");
+mongoose.connect(database.mongolab.url);
 
 // Logging and Parsing
 app.use(express.static(__dirname + '/public'));                 // sets the static files location to public
